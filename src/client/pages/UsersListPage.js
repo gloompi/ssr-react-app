@@ -11,10 +11,10 @@ class UsersList extends Component{
 
   render(){
     return(
-      <div>
+      <ul>
         <h3>Users List</h3>
         {this.renderUsers()}
-      </div>
+      </ul>
     )
   }
 
@@ -25,6 +25,13 @@ class UsersList extends Component{
   }
 }
 
-export default connect(state => ({
-  users: state.users
-}), {fetchUsers})(UsersList)
+function loadData(store) {
+  return store.dispatch(fetchUsers())
+}
+
+export default {
+  loadData,
+  component: connect(state => ({
+    users: state.users
+  }), {fetchUsers})(UsersList)
+}

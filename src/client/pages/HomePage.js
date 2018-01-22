@@ -13,4 +13,6 @@ function handleClick() {
   console.log('Hi there')
 }
 
-export default Home
+export default {
+  component: Home
+}
